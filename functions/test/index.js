@@ -54,12 +54,36 @@ router.put("/update/:id", async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
-	const { error } = await supabase.from("test").delete().eq("id", req.params.id);
+	const checkData = async () => {
+		const { data, error } = await supabase.from("test").select().eq("id", req.params.id);
 
-	if (error) {
-		return res.json(error);
-	} else {
-		return res.json({ success: true });
+		if (error) {
+			return res.json({
+				success: false,
+				message: "Error on getting data to delete",
+			});
+		} else {
+			if (data.length === 0) {
+				return res.json({
+					success: false,
+					message: "Error, no data to delete / wrong id",
+				});
+			}
+		}
+
+		return true;
+	};
+
+	let check = await checkData();
+
+	if (check === true) {
+		const { error } = await supabase.from("test").delete().eq("id", req.params.id);
+
+		if (error) {
+			return res.json(error);
+		} else {
+			return res.json({ success: true });
+		}
 	}
 });
 
