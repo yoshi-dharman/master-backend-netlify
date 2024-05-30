@@ -16,7 +16,7 @@ router.get("", (req, res) => {
 		Check: "Checking for somethings",
 		"/check/db": "Check database connection",
 
-		"-": "----------------------------------------------------",
+		"--": "----------------------------------------------------",
 		Test: "Testing for backend (db Supabase)",
 		Model: "id (auto generate primary), text (string), create_at (auto generate date)",
 		"/db": "Check database connection",
