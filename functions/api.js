@@ -14,16 +14,19 @@ router.get("", (req, res) => {
 		"-": "----------------------------------------------------",
 
 		Check: "Checking for somethings",
-		"/check/db": "Check database connection",
+		"GET - /check/db": "Check database connection",
 
 		"--": "----------------------------------------------------",
 		Test: "Testing for backend (db Supabase)",
 		Model: "id (auto generate primary), text (string), create_at (auto generate date)",
-		"/db": "Check database connection",
-		"/": "Get all data",
-		"/:id": "Get data by id",
-		"/update/:id": "Update data",
-		"/delete/:id": "Delete data",
+		"GET - /db": "Check database connection",
+		"GET - /": "Get all data",
+		"GET - /:id": "Get data by id",
+		"POST - /add": "Create data",
+		"PUT - /update/:id": "Update data",
+		"DELETE - /delete/:id": "Delete data",
+
+		"---": "----------------------------------------------------",
 	});
 });
 
