@@ -7,6 +7,7 @@ app.use(express.json());
 
 const checkRouter = require("./check/index");
 const testRouter = require("./test/index");
+const wishRouter = require("./wish/index");
 
 router.get("", (req, res) => {
 	res.json({
@@ -27,12 +28,21 @@ router.get("", (req, res) => {
 		"DELETE - /delete/:id": "Delete data",
 
 		"---": "----------------------------------------------------",
+		Wish: "For wish wedding page",
+		Model: "id (auto generate primary), name (string), wish (string), create_at (auto generate date)",
+		"GET - /db": "Check database connection",
+		"GET - /": "Get all data",
+		"POST - /add": "Create data",
+		"DELETE - /delete/:id": "Delete data",
+
+		"----": "----------------------------------------------------",
 	});
 });
 
 // Split Inside Folder
 router.use("/check", checkRouter);
 router.use("/test", testRouter);
+router.use("/wish", wishRouter);
 
 app.use("/api/", router);
 
