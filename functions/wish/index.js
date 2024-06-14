@@ -57,7 +57,7 @@ router.delete("/delete/:id", async (req, res) => {
 	let check = await checkData();
 
 	if (check === true) {
-		const { error } = await supabase.from("test").delete().eq("id", req.params.id);
+		const { error } = await supabase.from("wish").delete().eq("id", req.params.id);
 
 		if (error) {
 			return res.json(error);
