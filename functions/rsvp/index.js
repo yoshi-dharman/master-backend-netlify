@@ -14,7 +14,7 @@ router.get("/db", async (req, res) => {
 });
 
 router.get("", async (req, res) => {
-	const { data, error } = await supabase.from("wish").select();
+	const { data, error } = await supabase.from("rsvp").select();
 
 	if (error) {
 		return res.status(500).json(error);
@@ -24,7 +24,7 @@ router.get("", async (req, res) => {
 });
 
 router.post("/add", async (req, res) => {
-	const { error } = await supabase.from("wish").insert(req.body);
+	const { error } = await supabase.from("rsvp").insert(req.body);
 
 	if (error) {
 		return res.status(500).json(error);
@@ -35,7 +35,7 @@ router.post("/add", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
 	const checkData = async () => {
-		const { data, error } = await supabase.from("wish").select().eq("id", req.params.id);
+		const { data, error } = await supabase.from("rsvp").select().eq("id", req.params.id);
 
 		if (error) {
 			return res.status(400).json({
@@ -57,7 +57,7 @@ router.delete("/delete/:id", async (req, res) => {
 	let check = await checkData();
 
 	if (check === true) {
-		const { error } = await supabase.from("wish").delete().eq("id", req.params.id);
+		const { error } = await supabase.from("rsvp").delete().eq("id", req.params.id);
 
 		if (error) {
 			return res.status(500).json(error);

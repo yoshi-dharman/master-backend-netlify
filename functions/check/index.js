@@ -7,7 +7,7 @@ router.get("/db", async (req, res) => {
 	const { data, error } = await supabase.from("wakeup").select();
 
 	if (error) {
-		return res.json({
+		return res.status(500).json({
 			error,
 		});
 	} else {
